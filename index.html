@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Anita | Jewelry & Accessories</title>
+<title>anita | Jewelry & Accessories</title>
 
 
 <!-- Primary Meta Tags -->
-<meta name="title" content="اکسسوری‌های خاص و ظریف | Anita">
+<meta name="title" content="اکسسوری‌های خاص و ظریف | anita">
 <meta name="description" content="مجموعه‌ای از اکسسوری‌های ظریف و خاص شامل زیورآلات مرواریدی، مینیمال، سنگ طبیعی و کالکشن‌های ویژه؛ انتخابی زیبا برای خودتان یا هدیه به عزیزانتان.">
 <meta name="keywords" content="اکسسوری زنانه, زیورآلات, گردنبند, دستبند, گوشواره, مروارید, اکسسوری مینیمال, سنگ طبیعی, هدیه">
 <meta name="robots" content="index, follow">
-<meta name="author" content="Anita">
+<meta name="author" content="anita">
 <meta name="theme-color" content="#FAF6F3">
 <link rel="canonical" href="https://example.com/">
 
@@ -19,7 +19,7 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fa_IR">
 <meta property="og:site_name" content="">
-<meta property="og:title" content="اکسسوری‌های خاص و ظریف | Anita">
+<meta property="og:title" content="اکسسوری‌های خاص و ظریف | anita">
 <meta property="og:description" content="زیبایی در جزئیات؛ کالکشن‌های مرواریدی، مینیمال، سنگ طبیعی و اکسسوری‌های ویژه برای هر لحظه.">
 <meta property="og:url" content="https://example.com/">
 <meta property="og:image" content="static/images/og/og-accesory.webp">
@@ -31,7 +31,7 @@
 
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="اکسسوری‌های خاص و ظریف | Anita">
+<meta name="twitter:title" content="اکسسوری‌های خاص و ظریف | anita">
 <meta name="twitter:description" content="کالکشن‌های خاص اکسسوری؛ از مروارید و مینیمال تا سنگ‌های طبیعی و هدیه‌های زیبا.">
 <meta name="twitter:image" content="static/images/og/og-accesory.webp">
 
@@ -109,7 +109,7 @@
 <!-- 1. HEADER (sticky): menu on the right, logo center, contact on the left -->
 <header class="hdr"><div class="wrap hdr-in">
   <button class="icon-btn" @click="menuOpen=true" aria-label="منو"><svg class="i"><use href="#i-menu"/></svg></button>
-  <div class="logo">Anita<small>JEWELRY &amp; ACCESSORIES</small></div>
+  <div class="logo">anita<small>JEWELRY &amp; ACCESSORIES</small></div>
   <button class="icon-btn" @click="contactOpen=true" aria-label="تماس"><svg class="i"><use href="#i-phone"/></svg></button>
 </div></header>
 
@@ -261,7 +261,7 @@
 <!-- 11. FOOTER -->
 <footer><div class="wrap">
   <div class="foot">
-    <div class="logo">Anita<small>JEWELRY &amp; ACCESSORIES</small></div>
+    <div class="logo">anita<small>JEWELRY &amp; ACCESSORIES</small></div>
     <nav><a href="#products" @click.prevent="scrollTop()">محصولات</a><a href="#" @click.prevent="contactOpen=true">تماس با ما</a></nav>
     <div class="socials">
       <a href="#" aria-label="اینستاگرام"><svg class="i"><use href="#i-instagram"/></svg></a>
@@ -269,7 +269,7 @@
       <a href="#" aria-label="واتساپ"><svg class="i"><use href="#i-whatsapp"/></svg></a>
     </div>
   </div>
-  <div class="copy"><p>© 2024 Anita. All rights reserved.</p><p>Design &amp; Developed By MohammadTaha</p></div>
+  <div class="copy"><p>© 2024 anita. All rights reserved.</p><p>Design &amp; Developed By MohammadTaha</p></div>
 </div></footer>
 
 <!-- OVERLAY + HAMBURGER MENU -->
@@ -343,7 +343,7 @@
   <div class="modal t-enter">
     <div class="mhead"><span x-text="modalProduct.title"></span><button class="mclose" @click="closeModal()"><svg class="i"><use href="#i-close"/></svg></button></div>
     <div class="mbody">
-      <div>
+      <div class="min-w-0">
         <div class="gal" @touchstart.passive="tx=$event.touches[0].clientX" @touchend.passive="swipe($event.changedTouches[0].clientX)">
           <img :src="modalProduct.images[idx]" :alt="modalProduct.title" onerror="this.style.display='none'">
           <template x-if="modalProduct.images.length>1"><div>
@@ -357,7 +357,7 @@
       <div>
         <h2 class="m-0 text-[length:var(--font-size-xl)]" x-text="modalProduct.title"></h2>
         <p class="my-[var(--space-3)]"><span class="price" x-text="fmt(modalProduct.price)"></span></p>
-        <p class="text-[var(--text-secondary)] m-0" x-show="modalProduct.desc" x-text="modalProduct.desc"></p>
+        <p class="text-[var(--text-secondary)] m-0" x-show="modalProduct.desc" x-html="modalProduct.desc"></p>
         <div class="meta">
           <div><small>دسته‌بندی</small><b x-text="modalProduct.category"></b></div>
           <div><small>کالکشن</small><b x-text="modalProduct.collection"></b></div>
@@ -398,7 +398,7 @@ function shopApp() {
     menuOpen: false, drawerOpen: false, contactOpen: false, openDD: null, openAcc: null,
     sort: 'newest', page: 1, perPage: 6, loading: false, modalProduct: null, idx: 0, tx: 0,
     menuActive: 'خانه', collections,
-    contact: { phone: '۰۹۱۲ ۱۲۳ ۴۵۶۷', email: 'info@Anitaea.ir', address: 'تهران، ایران' , whatsapp: '989120000000',
+    contact: { phone: '۰۹۱۲ ۱۲۳ ۴۵۶۷', email: 'info@anitaea.ir', address: 'تهران، ایران' , whatsapp: '989120000000',
       telegram: 'Mhsn_8482', instagram: 'Flora_shop'},
     links: [
       { label: 'خانه', icon: 'i-home', action: 'top' },
@@ -409,7 +409,7 @@ function shopApp() {
     defs: [
       { key: 'collection', label: 'کالکشن', options: collections, field: 'collection' },
       { key: 'category', label: 'دسته‌بندی', options: categories, field: 'category' },
-      { key: 'material', label: 'جنس', options: materials, field: 'material' },
+      { key: 'material', label: 'جنس و متریال', options: materials, field: 'material' },
       { key: 'feature', label: 'ویژگی', options: features, field: 'features' },
       { key: 'gender', label: 'جنسیت', options: genders, field: 'gender' },
     ],

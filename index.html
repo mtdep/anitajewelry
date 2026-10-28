@@ -230,12 +230,12 @@
 
 <!-- 8. WHY -->
 <section class="sec">
-  <h2 class="sec-title">چرا لونیا؟</h2>
+  <h2 class="sec-title">چرا ما؟</h2>
   <div class="why">
     <div><span class="ic-c"><svg class="i"><use href="#i-shield"/></svg></span><b>پشتیبانی سریع</b>پاسخ‌گویی در کمترین زمان</div>
     <div><span class="ic-c"><svg class="i"><use href="#i-headset"/></svg></span><b>راهنمای انتخاب</b>مشاوره انتخاب اکسسوری</div>
-    <div><span class="ic-c"><svg class="i"><use href="#i-gift"/></svg></span><b>بسته‌بندی هدیه</b>بسته‌بندی شیک و لوکس</div>
-    <div><span class="ic-c"><svg class="i"><use href="#i-material"/></svg></span><b>سفارش‌سازی اختصاصی</b>ساخت طرح دلخواه</div>
+    <div><span class="ic-c"><svg class="i"><use href="#i-gift"/></svg></span><b>تنوع برای هر سلیقه</b>از مدل های مینیمال تا فانتزی و دریایی</div>
+    <div><span class="ic-c"><svg class="i"><use href="#i-material"/></svg></span><b>سفارش‌سازی اکسسوری</b>ساخت طرح دلخواه</div>
   </div>
 </section>
 
@@ -264,9 +264,8 @@
     <div class="logo">anita<small>JEWELRY &amp; ACCESSORIES</small></div>
     <nav><a href="#products" @click.prevent="scrollTop()">محصولات</a><a href="#" @click.prevent="contactOpen=true">تماس با ما</a></nav>
     <div class="socials">
-      <a href="#" aria-label="اینستاگرام"><svg class="i"><use href="#i-instagram"/></svg></a>
-      <a href="#" aria-label="تلگرام"><svg class="i"><use href="#i-telegram"/></svg></a>
-      <a href="#" aria-label="واتساپ"><svg class="i"><use href="#i-whatsapp"/></svg></a>
+      <a target="_blank" :href="'https://instagram.com/' + contact.instagram" aria-label="اینستاگرام"><svg class="i"><use href="#i-instagram"/></svg></a>
+      <a target="_blank" :href="'https://t.me/' + contact.telegram" aria-label="تلگرام"><svg class="i"><use href="#i-telegram"/></svg></a>
     </div>
   </div>
   <div class="copy"><p>© 2024 anita. All rights reserved.</p><p>Design &amp; Developed By MohammadTaha</p></div>
@@ -379,13 +378,10 @@
     <div class="mhead"><span>تماس با ما</span><button class="mclose" @click="contactOpen=false"><svg class="i"><use href="#i-close"/></svg></button></div>
     <div class="dbody" style="padding:var(--space-5)">
       <p class="m-0 text-[var(--text-secondary)]">برای سفارش، مشاوره انتخاب یا طرح اختصاصی با ما در ارتباط باشید.</p>
-      <a class="crow" :href="'tel:'+contact.phone"><span class="ic-c"><svg class="i"><use href="#i-phone"/></svg></span><span><small class="block text-[var(--text-muted)]">تلفن</small><b x-text="contact.phone"></b></span></a>
-      <a class="crow" :href="'mailto:'+contact.email"><span class="ic-c"><svg class="i"><use href="#i-mail"/></svg></span><span><small class="block text-[var(--text-muted)]">ایمیل</small><b x-text="contact.email"></b></span></a>
-      <div class="crow"><span class="ic-c"><svg class="i"><use href="#i-pin"/></svg></span><span><small class="block text-[var(--text-muted)]">نشانی</small><b x-text="contact.address"></b></span></div>
+      <a target="_blank" class="crow" :href="'mailto:'+contact.email"><span class="ic-c"><svg class="i"><use href="#i-mail"/></svg></span><span><small class="block text-[var(--text-muted)]">ایمیل</small><b x-text="contact.email"></b></span></a>
       <div class="socials">
-        <a :href="'https://instagram.com/' + contact.instagram" aria-label="اینستاگرام"><svg class="i"><use href="#i-instagram"/></svg></a>
-        <a :href="'https://t.me/' + contact.telegram" aria-label="تلگرام"><svg class="i"><use href="#i-telegram"/></svg></a>
-        <a :href="'https://wa.me/' + contact.whatsapp" aria-label="واتساپ"><svg class="i"><use href="#i-whatsapp"/></svg></a>
+        <a target="_blank" :href="'https://instagram.com/' + contact.instagram" aria-label="اینستاگرام"><svg class="i"><use href="#i-instagram"/></svg></a>
+        <a target="_blank" :href="'https://t.me/' + contact.telegram" aria-label="تلگرام"><svg class="i"><use href="#i-telegram"/></svg></a>
       </div>
     </div>
   </div>
@@ -396,10 +392,10 @@ function shopApp() {
   return {
     theme: document.documentElement.getAttribute('data-theme') || 'light',
     menuOpen: false, drawerOpen: false, contactOpen: false, openDD: null, openAcc: null,
-    sort: 'newest', page: 1, perPage: 6, loading: false, modalProduct: null, idx: 0, tx: 0,
+    sort: 'newest', page: 1, perPage: 12, loading: false, modalProduct: null, idx: 0, tx: 0,
     menuActive: 'خانه', collections,
-    contact: { phone: '۰۹۱۲ ۱۲۳ ۴۵۶۷', email: 'info@anitaea.ir', address: 'تهران، ایران' , whatsapp: '989120000000',
-      telegram: 'Mhsn_8482', instagram: 'Flora_shop'},
+    contact: {email: 'anitaaghoun@gmail.com',
+      telegram: 'anitajewelry', instagram: 'anitajewelry'},
     links: [
       { label: 'خانه', icon: 'i-home', action: 'top' },
       { label: 'محصولات', icon: 'i-category', action: 'products' },
@@ -493,7 +489,7 @@ function shopApp() {
     get orderLink() {
     const p = this.modalProduct;
     if (!p) return '#';
-    const lines = ['سلام وقت بخیر', `از محصول «${p.title}» خوشم اومده.`, `توضیحات: ${p.desc}`, 'لطفاً برای ثبت سفارش راهنمایی کنید.'];
+    const lines = ['سلام وقت بخیر', `از محصول «${p.title}» خوشم اومده.`, `توضیحات: ${p.desc.slice(0, 50) + '...'}`, 'لطفاً برای ثبت سفارش راهنمایی کنید.'];
     return `https://t.me/${this.contact.telegram}?text=${encodeURIComponent(lines.join('\n'))}`;
     },
 
